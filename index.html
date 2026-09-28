@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Csabszeg – YouTube lejátszó</title>
+<style>
+html,body{margin:0;height:100%;background:#111;color:#fff;font-family:Arial,sans-serif}
+body{display:flex;align-items:center;justify-content:center}
+#player{width:min(100vw,1200px);aspect-ratio:16/9}
+iframe{width:100%;height:100%;border:0}
+#msg{padding:24px;text-align:center;color:#bbb}
+</style>
+</head>
+<body>
+<div id="player"><div id="msg">YouTube-lejátszó betöltése…</div></div>
+<script>
+const params=new URLSearchParams(location.search);
+const playlist=params.get("list") || "PLmvP_Ao-CsH8W69r2-GoSseniOomZTg7N";
+const origin=location.origin;
+document.getElementById("player").innerHTML =
+  '<iframe src="https://www.youtube.com/embed/videoseries?list=' +
+  encodeURIComponent(playlist) +
+  '&origin=' + encodeURIComponent(origin) +
+  '&enablejsapi=1" ' +
+  'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+</script>
+</body>
+</html>
